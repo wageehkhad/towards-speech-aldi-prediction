@@ -1,0 +1,20 @@
+# Decompressed training manifest (tracked as manifest_train_aldi.csv.gz)
+assets/sada/manifest_train_aldi.csv
+
+# Data and model artefacts that are not redistributed here
+assets/models/
+assets/hf_cache/
+assets/sada/wavs/
+assets/casablanca/casablanca_audio_aldi/
+assets/genre_based_aldi/raw_audio/
+assets/genre_based_aldi/clips/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# OS
+.DS_Store

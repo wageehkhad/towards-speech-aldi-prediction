@@ -1,0 +1,13 @@
+Paired two-tailed t-test on per-utterance squared error (B2 vs Direct)
+Columns: dialect, n, mse_b2, mse_direct, rmse_b2, rmse_direct, mean_se_diff_direct_minus_b2, t_stat, p_value, significant_p_lt_0_05, better_model_by_rmse
+
+   dialect    n   mse_b2  mse_direct  rmse_b2  rmse_direct  mean_se_diff_direct_minus_b2    t_stat      p_value  significant_p_lt_0_05 better_model_by_rmse
+       ALL 6818 0.044164    0.039445 0.210153     0.198607                     -0.004719  3.923754 8.803689e-05                   True               Direct
+   Algeria  844 0.053292    0.047735 0.230852     0.218484                     -0.005557  1.437774 1.508692e-01                  False               Direct
+     Egypt  846 0.038216    0.046805 0.195488     0.216346                      0.008590 -2.463538 1.395560e-02                   True                   B2
+    Jordan  847 0.015982    0.025433 0.126421     0.159477                      0.009451 -5.319863 1.330414e-07                   True                   B2
+Mauritania  953 0.084436    0.056869 0.290578     0.238471                     -0.027567  6.452295 1.751251e-10                   True               Direct
+   Morocco 1045 0.056668    0.036847 0.238050     0.191955                     -0.019821  5.570684 3.227601e-08                   True               Direct
+ Palestine  667 0.028677    0.032486 0.169342     0.180240                      0.003810 -1.254571 2.100748e-01                  False                   B2
+       UAE  813 0.024971    0.027009 0.158021     0.164344                      0.002038 -0.871614 3.836764e-01                  False                   B2
+     Yemen  803 0.038794    0.038829 0.196963     0.197051                      0.000035 -0.010981 9.912413e-01                  False                   B2

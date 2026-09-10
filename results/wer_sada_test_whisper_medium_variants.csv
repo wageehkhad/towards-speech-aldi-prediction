@@ -1,0 +1,4 @@
+model,model_path,dataset,n,wer,cer,runtime_sec,samples_per_sec,source
+raw_whisper_medium,openai/whisper-medium,sada_test,6193,1.060842017313807,0.7648108834913674,,,baseline1_pretrained_asr/metrics_summary.json
+whisper_medium_asr_30h,aldi_whisper_sada/checkpoints/whisper_sada_asr,sada_test,6193,0.46031285538561517,0.2022384981602183,3330.1,1.8597,computed_on_sada_test
+whisper_medium_asr_full,aldi_whisper_sada/checkpoints/whisper_sada_asr_full,sada_test,6193,0.3522640239515399,0.14419740543009413,2907.1,2.1303,computed_on_sada_test

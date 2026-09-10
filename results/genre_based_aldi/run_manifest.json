@@ -1,0 +1,10 @@
+{
+  "checkpoint": "assets/models/whisper_aldi_sada_full_medium/checkpoint_epoch5.pt",
+  "device": "cuda",
+  "model_size": "medium",
+  "freeze_encoder": false,
+  "batch_size": 32,
+  "clips_dir": "assets/genre_based_aldi/clips",
+  "n_predictions": 1791,
+  "output_csv": "results/genre_based_aldi/clip_predictions.csv"
+}

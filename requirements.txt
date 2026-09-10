@@ -1,0 +1,13 @@
+numpy
+pandas
+scipy
+matplotlib
+tqdm
+torch
+torchaudio
+transformers
+datasets
+soundfile
+pydub
+jiwer
+yt-dlp

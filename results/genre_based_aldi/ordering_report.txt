@@ -1,0 +1,13 @@
+Genre-Based ALDi qualitative summary (full pooled test)
+
+Mean predictions by genre (ascending):
+- news: 0.041909 (n=134)
+- religious: 0.208945 (n=120)
+- podcast: 0.724700 (n=360)
+- talkshow: 0.728177 (n=443)
+- street_interview: 0.790148 (n=374)
+- drama: 0.797896 (n=360)
+
+Main ordering check:
+- comparable sequence: news < drama < talkshow < podcast
+- monotonic increasing: False

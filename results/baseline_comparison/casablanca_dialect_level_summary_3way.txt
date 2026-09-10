@@ -1,0 +1,10 @@
+winner counts by dialect (casablanca)
+pearson:
+winner_pearson
+baseline2_finetuned_asr    6
+direct_aldi_model          2
+
+rmse (lower is better):
+winner_rmse
+baseline2_finetuned_asr    5
+direct_aldi_model          3

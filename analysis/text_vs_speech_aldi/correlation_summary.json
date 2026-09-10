@@ -1,0 +1,24 @@
+{
+  "dataset_filter": "casablanca",
+  "metrics_overall": {
+    "n": 6819,
+    "pearson": 0.6797597865749796,
+    "spearman": 0.621594102351318,
+    "mae_text_vs_speech": 0.14292004666590488,
+    "mean_text_aldi": 0.7559792312810267,
+    "mean_predicted_aldi": 0.7185986740140413
+  },
+  "text_model": "AMR-KELEG/Sentence-ALDi",
+  "n_rows_scored": 6819,
+  "metrics_by_dataset": [
+    {
+      "dataset": "casablanca",
+      "n": 6819,
+      "pearson": 0.6797597865749796,
+      "spearman": 0.621594102351318,
+      "mae_text_vs_speech": 0.14292004666590488,
+      "mean_text_aldi": 0.7559792312810267,
+      "mean_predicted_aldi": 0.7185986740140413
+    }
+  ]
+}

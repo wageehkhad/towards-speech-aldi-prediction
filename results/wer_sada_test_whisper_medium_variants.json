@@ -1,0 +1,35 @@
+[
+  {
+    "model": "raw_whisper_medium",
+    "model_path": "openai/whisper-medium",
+    "dataset": "sada_test",
+    "n": 6193,
+    "wer": 1.060842017313807,
+    "cer": 0.7648108834913674,
+    "runtime_sec": null,
+    "samples_per_sec": null,
+    "source": "baseline1_pretrained_asr/metrics_summary.json"
+  },
+  {
+    "model": "whisper_medium_asr_30h",
+    "model_path": "assets/models/whisper_sada_asr",
+    "dataset": "sada_test",
+    "n": 6193,
+    "wer": 0.46031285538561517,
+    "cer": 0.2022384981602183,
+    "runtime_sec": 3330.1,
+    "samples_per_sec": 1.8597,
+    "source": "computed_on_sada_test"
+  },
+  {
+    "model": "whisper_medium_asr_full",
+    "model_path": "assets/models/whisper_sada_asr_full",
+    "dataset": "sada_test",
+    "n": 6193,
+    "wer": 0.3522640239515399,
+    "cer": 0.14419740543009413,
+    "runtime_sec": 2907.1,
+    "samples_per_sec": 2.1303,
+    "source": "computed_on_sada_test"
+  }
+]

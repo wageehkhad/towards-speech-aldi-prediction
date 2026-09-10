@@ -1,0 +1,50 @@
+filename,url,genre,subgenre,source_label,dialect_region,start_time,end_time,expected_aldi,notes
+news_01.wav,https://www.youtube.com/watch?v=TXmeVPZvKq8,news,news,BBC Arabic 1,MSA,00:00:30,00:10:30,low,Formal broadcast news
+news_02.wav,https://www.youtube.com/watch?v=mRP5nzHRFvQ,news,news,Al Jazeera Arabic 1,MSA,00:00:30,00:10:30,low,Formal broadcast news
+news_03.wav,https://www.youtube.com/watch?v=rjNAnL_Qfe4,news,news,BBC Arabic 2,MSA,00:00:30,00:10:30,low,Formal broadcast news
+news_04.wav,https://www.youtube.com/watch?v=O_sq3kuVx9I,news,news,Al Jazeera Arabic 2,MSA,00:00:30,00:10:30,low,Formal broadcast news
+religious_01.wav,https://youtu.be/NBEmiMVt_eA?si=qbf4BtiHxAsbyCGq,religious,religious,Religious clip 1,Formal recited register,00:00:30,00:10:30,very_low,Religious or recited register
+religious_02.wav,https://youtu.be/2Kp_TeO0KpA?si=oW8EwQk4_bO4uNIF,religious,religious,Religious clip 2,Formal recited register,00:00:30,00:10:30,very_low,Religious or recited register
+religious_03.wav,https://youtu.be/tXdOF6zn0sQ?si=ZlZSJtY-tiQYdnXi,religious,religious,Religious clip 3,Formal recited register,00:00:30,00:10:30,very_low,Religious or recited register
+drama_01.wav,https://youtu.be/Savl4tXOetM?si=piEWWhAa0fId4iKA,drama,tv_drama,Layali Roxy,Levantine,00:00:30,00:10:30,medium,Scripted drama dialogue
+drama_02.wav,https://youtu.be/BhKkurOzfUE?si=MLN2OXqsk1kfWXmH,drama,tv_drama,Al Yateem,Gulf,00:00:30,00:10:30,medium,Scripted drama dialogue
+drama_03.wav,https://www.youtube.com/watch?v=_9LHd93WxS8,drama,tv_drama,Kuwaiti drama,Kuwaiti,00:00:30,00:10:30,medium,Scripted drama dialogue
+drama_04.wav,https://youtu.be/q21lZnAVRuM?si=BNQ_115WLvXjo7-W,drama,tv_drama,Saudi drama,Saudi,00:00:30,00:10:30,medium,Scripted drama dialogue
+drama_05.wav,https://www.youtube.com/watch?v=CVdgG9EeR8A&list=PLj133TOhaCmeDhukjUGta7PlJQ2lguo24&index=4,drama,tv_drama,Egyptian drama,Egyptian,00:00:30,00:10:30,medium,Scripted drama dialogue
+talkshow_01.wav,https://youtu.be/BfnJ-be4a8Y?si=XOAP821p66-6fsBe,talkshow,talk_show,Saudi talk show,Saudi,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_02.wav,https://www.youtube.com/watch?v=lTQrCEji3kY,talkshow,talk_show,Lebanese talk show,Lebanese,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_03.wav,https://www.youtube.com/watch?v=v0OBx-YTpaU&list=PLj5BGX9byu2ZwKCCAkqZbkeHekgOlhpO7&index=3,talkshow,talk_show,Jordanian talk show,Jordanian,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_04.wav,https://www.youtube.com/watch?v=DWtbJv5VK9U,talkshow,talk_show,Moroccan talk show,Moroccan,00:00:30,00:10:30,medium_high,Conversational studio speech
+podcast_gulf_01.wav,https://youtu.be/HZKdvcoyzwI?si=2BTI3cpe4HQoGibY,podcast_gulf,podcast,Saudi podcast,Saudi,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_maghrebi_01.wav,https://www.youtube.com/live/iigsuJ4YP44?si=u13sGmpWqXXwJLjW,podcast_maghrebi,podcast,Moroccan podcast,Moroccan,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_levant_01.wav,https://youtu.be/D6XyQbE7xTM?si=uR8hD8QZx5OvA9zh,podcast_levant,podcast,Lebanese podcast,Lebanese,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_gulf_02.wav,https://www.youtube.com/watch?v=Q3BlMCSbNm0,podcast_gulf,podcast,Kuwaiti podcast,Kuwaiti,00:00:30,00:10:30,high,Long-form conversational podcast
+street_saudi_01.wav,https://youtu.be/2Gdm3zAJLKc?si=F9fJJy5LHDpK5z07,street_interview,street_interview,Saudi street interview,Saudi,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_saudi_short_01.wav,https://www.youtube.com/shorts/Aewctu7XCbY,street_interview,street_interview,Saudi street interview short,Saudi,00:00:00,00:00:60,exploratory_high,Exploratory short-form social-media street interview; keep separate from core analysis
+street_egypt_01.wav,https://youtu.be/Zsz0ou4VX2g?si=T4iF6GvXZ43SvGUV,street_interview,street_interview,Egypt street interview,Egyptian,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_jordan_01.wav,https://youtu.be/kTxGFrljLzM?si=bTd2ixbRCO4PdRp1,street_interview,street_interview,Jordan street interview,Jordanian,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+tvshow_01.wav,https://www.youtube.com/watch?v=5eVakUcuZBA,tv_show,tv_show,Moroccan TV show 1,Moroccan,00:00:30,00:10:30,medium,Scripted or semi-scripted television dialogue
+tvshow_02.wav,https://www.youtube.com/watch?v=FzOKvECNWuI&list=PLPgO6vANU2JiAP8Aci4ZyGbfsIrvuHE7K&index=2,tv_show,tv_show,Egyptian TV show,Egyptian,00:00:30,00:10:30,medium,Scripted or semi-scripted television dialogue
+tvshow_03.wav,https://www.youtube.com/watch?v=-_DTQmG0xAg,tv_show,tv_show,Levantine TV show,Levantine,00:00:30,00:10:30,medium,Scripted or semi-scripted television dialogue
+tvshow_04.wav,https://www.youtube.com/watch?v=eNU5XEbI81A,tv_show,tv_show,Moroccan TV show 2,Moroccan,00:00:30,00:10:30,medium,Scripted or semi-scripted television dialogue
+talkshow_05.wav,https://www.youtube.com/watch?v=7wZ43577uoM,talkshow,talk_show,Egyptian talk show 1,Egyptian,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_06.wav,https://youtu.be/tzgs8g9jzQM?si=jhSgvHRpRZMDtBXf,talkshow,talk_show,Egyptian talk show 2,Egyptian,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_07.wav,https://www.youtube.com/watch?v=DtV2W7PRa80,talkshow,talk_show,Egyptian talk show 3,Egyptian,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_08.wav,https://youtu.be/q9I77cq9Fys?si=KPkKFUijg9hHezfq,talkshow,talk_show,UAE talk show,UAE/Gulf,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_09.wav,https://youtu.be/1gHHKm6wYZE?si=5XT5wmpV72Reab4a,talkshow,talk_show,Saudi talk show 2,Saudi/Gulf,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_10.wav,https://youtu.be/RXo1bNVJRvs?si=JACCEU-rU7Ew5Lw8,talkshow,talk_show,Moroccan talk show 2,Moroccan,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_11.wav,https://www.youtube.com/watch?v=SCBxthgLHz0,talkshow,talk_show,Moroccan talk show 3,Moroccan,00:00:30,00:10:30,medium_high,Conversational studio speech
+talkshow_12.wav,https://www.youtube.com/watch?v=DJQjEiStj5U,talkshow,talk_show,Lebanese talk show 2,Lebanese,00:00:30,00:10:30,medium_high,Conversational studio speech
+podcast_gulf_03.wav,https://youtu.be/HzbqbqiRPd8?si=GDyk-9F1DeYno0RM,podcast_gulf,podcast,Saudi/Gulf podcast 2,Saudi/Gulf,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_egypt_01.wav,https://www.youtube.com/watch?v=YwZh3ddj6w8,podcast_egypt,podcast,Egyptian podcast 1,Egyptian,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_egypt_02.wav,https://www.youtube.com/watch?v=w0JHMyGkcf8,podcast_egypt,podcast,Egyptian podcast 2,Egyptian,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_levant_02.wav,https://www.youtube.com/watch?v=0ngmeMkX8FQ,podcast_levant,podcast,Levantine podcast 2,Levantine,00:00:30,00:10:30,high,Long-form conversational podcast
+podcast_maghrebi_02.wav,https://www.youtube.com/watch?v=fXukCc1aA6g,podcast_maghrebi,podcast,Moroccan podcast 2,Moroccan,00:00:30,00:10:30,high,Long-form conversational podcast
+street_morocco_01.wav,https://www.youtube.com/watch?v=k9-vYG6I18o,street_interview,street_interview,Moroccan street interview 1,Moroccan,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_morocco_02.wav,https://www.youtube.com/watch?v=ZoEmKRuIE_4,street_interview,street_interview,Moroccan street interview 2,Moroccan,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_egypt_02.wav,https://www.youtube.com/watch?v=BNB9NzTt6aI,street_interview,street_interview,Egypt street interview 2,Egyptian,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_egypt_03.wav,https://www.youtube.com/watch?v=WwaZOTabYF4,street_interview,street_interview,Egypt street interview 3,Egyptian,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_jordan_02.wav,https://www.youtube.com/watch?v=jjD976SmVSA,street_interview,street_interview,Jordan street interview 2,Jordanian,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_lebanon_01.wav,https://www.youtube.com/watch?v=SDAXKba2DRs,street_interview,street_interview,Lebanon street interview,Lebanese,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_saudi_02.wav,https://www.youtube.com/watch?v=0_O4hE7TQ9U,street_interview,street_interview,Saudi street interview 2,Saudi,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech
+street_saudi_03.wav,https://www.youtube.com/watch?v=LZRcR4PxJR4,street_interview,street_interview,Saudi street interview 3,Saudi,00:00:30,00:10:30,exploratory_high,Exploratory spontaneous speech

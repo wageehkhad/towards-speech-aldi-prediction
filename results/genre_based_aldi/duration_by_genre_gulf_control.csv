@@ -1,0 +1,7 @@
+genre,n_sources,n_clips,total_duration_sec,total_duration_min
+religious,3,120,1795.808,29.93
+news,4,134,2005.246,33.421
+drama,3,120,1793.834,29.897
+talkshow,3,120,1799.519,29.992
+podcast,3,120,1797.032,29.951
+street_interview,4,115,1717.487,28.625

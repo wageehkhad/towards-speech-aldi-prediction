@@ -1,0 +1,15 @@
+# Paired Statistical Tests
+
+Metric: absolute error vs ground-truth ALDi
+Positive improvement means direct ALDi model has lower error than baseline.
+
+## baseline1_pretrained_asr
+- sada_test: n=6193 mean_abs_error_improvement(direct-baseline)=0.142456 95%CI=[0.134947,0.149892] paired_t_p=5.66012e-274
+- casablanca: n=6818 mean_abs_error_improvement(direct-baseline)=0.128945 95%CI=[0.121961,0.135916] paired_t_p=2.91124e-274
+- mediaspeech: n=2505 mean_abs_error_improvement(direct-baseline)=0.021696 95%CI=[0.016536,0.026654] paired_t_p=7.07571e-17
+
+## baseline2_finetuned_asr
+- sada_test: n=6193 mean_abs_error_improvement(direct-baseline)=-0.031256 95%CI=[-0.035199,-0.027522] paired_t_p=1.89078e-54
+- casablanca: n=6818 mean_abs_error_improvement(direct-baseline)=-0.011148 95%CI=[-0.015040,-0.007237] paired_t_p=1.16687e-08
+- mediaspeech: n=2505 mean_abs_error_improvement(direct-baseline)=-0.010288 95%CI=[-0.013894,-0.006749] paired_t_p=1.9494e-08
+

@@ -1,0 +1,19 @@
+WER vs ALDi error analysis
+
+Casablanca dialects ordered by mean WER:
+Jordan: n=847 mean_wer=0.414 rmse_b2=0.126 rmse_direct=0.159
+UAE: n=813 mean_wer=0.434 rmse_b2=0.158 rmse_direct=0.164
+Palestine: n=667 mean_wer=0.493 rmse_b2=0.169 rmse_direct=0.180
+Yemen: n=803 mean_wer=0.649 rmse_b2=0.197 rmse_direct=0.197
+Egypt: n=846 mean_wer=0.663 rmse_b2=0.195 rmse_direct=0.216
+Morocco: n=1045 mean_wer=0.832 rmse_b2=0.238 rmse_direct=0.192
+Algeria: n=844 mean_wer=0.845 rmse_b2=0.231 rmse_direct=0.218
+Mauritania: n=953 mean_wer=0.912 rmse_b2=0.291 rmse_direct=0.238
+
+WER bins across all datasets:
+0.00-0.10: n=1468 mean_wer=0.011 rmse_b2=0.035 rmse_direct=0.173 b2_win_rate=0.914 direct_win_rate=0.086
+0.10-0.25: n=1670 mean_wer=0.174 rmse_b2=0.098 rmse_direct=0.142 b2_win_rate=0.696 direct_win_rate=0.304
+0.25-0.50: n=4566 mean_wer=0.365 rmse_b2=0.130 rmse_direct=0.150 b2_win_rate=0.638 direct_win_rate=0.362
+0.50-0.75: n=4190 mean_wer=0.588 rmse_b2=0.184 rmse_direct=0.178 b2_win_rate=0.566 direct_win_rate=0.434
+0.75-1.00: n=1880 mean_wer=0.829 rmse_b2=0.232 rmse_direct=0.200 b2_win_rate=0.487 direct_win_rate=0.513
+1.00+: n=1737 mean_wer=1.235 rmse_b2=0.343 rmse_direct=0.282 b2_win_rate=0.459 direct_win_rate=0.541

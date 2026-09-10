@@ -1,0 +1,13 @@
+Genre-Based ALDi qualitative summary (Saudi/Gulf control test)
+
+Mean predictions by genre (ascending):
+- news: 0.041909 (n=134)
+- religious: 0.208945 (n=120)
+- talkshow: 0.607087 (n=120)
+- podcast: 0.688225 (n=120)
+- street_interview: 0.749851 (n=115)
+- drama: 0.771752 (n=120)
+
+Main ordering check:
+- comparable sequence: news < drama < talkshow < podcast
+- monotonic increasing: False
