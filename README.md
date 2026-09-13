@@ -17,6 +17,7 @@ genre_based_aldi_experiments_scripts/   genre validation study
 assets/                                 manifests and metadata
 analysis/                               error analysis, text vs speech comparison
 results/                                metrics, comparison tables, statistical tests
+experiments/                            one entry-point script per experimental setup
 ```
 
 ## Script guide
@@ -91,13 +92,15 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-Python 3.8, CUDA PyTorch. Trained on NVIDIA Quadro RTX 8000.
+Python 3.8 (pinned in `.python-version`), CUDA PyTorch. Training was run on
+NVIDIA Quadro RTX 8000 GPUs. `requirements.txt` lists exact versions of the
+environment the reported results were produced in.
 
 ## Data
 
-Manifests and metadata only. No audio, no checkpoints. Get SADA, Casablanca and
-MediaSpeech from their original sources and lay them out under `assets/` as
-described in `assets/README.md`.
+Manifests and metadata only. No audio, no checkpoints. See `DATASETS.md` for
+how to obtain each corpus, and `assets/README.md` for the directory layout the
+scripts expect.
 
 The SADA training manifest is gzipped:
 
@@ -107,7 +110,21 @@ gunzip -k assets/sada/manifest_train_aldi.csv.gz
 
 ## Running the experiments
 
-All paths below are relative to `aldi_whisper_sada_scripts/`.
+Each of the three setups has a single entry point that runs training,
+evaluation and analysis end to end:
+
+```bash
+experiments/run_cascaded.sh        # ASR then text ALDi          (Table 1, both cascaded columns)
+experiments/run_direct_whisper.sh  # direct Whisper-medium       (Table 1, Table 2, error analysis)
+experiments/run_direct_mms.sh      # direct MMS-1B               (Table 1)
+```
+
+Set `SKIP_TRAIN=1` to reuse existing checkpoints and run evaluation only. The
+evaluation stage selects the best-validation checkpoint from
+`train_history.json`, matching the protocol described in the paper.
+
+The individual stages are below; all paths are relative to
+`aldi_whisper_sada_scripts/`.
 
 ### Labels
 
