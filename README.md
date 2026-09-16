@@ -65,7 +65,7 @@ Analysis and reporting
 | `compare_baselines.py` | Aggregates the direct-vs-baseline comparison | Table 1 |
 | `analyze_b2_vs_direct_wer.py` | Relates WER to ALDi error, per dialect and in WER bins | Table 2 RMSE and WER columns |
 | `dialect_ttests.py` | Per-dialect paired t-tests on squared error | Table 2 significance markers |
-| `plot_scaling.py` | RMSE against training hours | Appendix scaling figure |
+| `plot_scaling.py` | RMSE against training hours | |
 | `error_analysis.py` | Cross-dataset error analysis for the direct model | |
 | `error_analysis_filtered.py` | Error analysis variant with optional non-speech filtering | |
 | `text_vs_speech_aldi.py` | Direct speech predictions against text Sentence-ALDi scores | |
