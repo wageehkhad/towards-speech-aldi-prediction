@@ -35,11 +35,7 @@ import torchaudio
 from transformers import WhisperFeatureExtractor
 
 from analyze_b2_vs_direct_wer import word_error_rate
-from asr_aldi_baseline_utils import (
-    SentenceALDiScorer,
-    WhisperASRTranscriber,
-    iter_casablanca_hf_samples,
-)
+from asr_aldi_baseline_utils import SentenceALDiScorer, WhisperASRTranscriber
 from submission_paths import CASABLANCA_DIR, MODELS_DIR, RESULTS_DIR, path_str
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -158,6 +154,70 @@ def score_direct(samples: List[object], model, extractor, device: torch.device, 
     return scores
 
 
+class Utterance(object):
+    """Metadata for one utterance; audio is attached later for the pool only."""
+
+    __slots__ = ("sample_id", "dialect", "reference_text", "duration_sec", "true_aldi", "audio_input")
+
+    def __init__(self, sample_id, dialect, reference_text, duration_sec, true_aldi):
+        self.sample_id = sample_id
+        self.dialect = dialect
+        self.reference_text = reference_text
+        self.duration_sec = duration_sec
+        self.true_aldi = true_aldi
+        self.audio_input = None
+
+
+def load_metadata(metadata_csv: str) -> List[Utterance]:
+    # Selection needs only the scored CSV. Decoding audio for all 6,819
+    # utterances just to choose 80 of them costs about 2 GB of memory, which is
+    # enough to get the process killed on a modest machine.
+    meta = pd.read_csv(metadata_csv)
+    utterances = [
+        Utterance(
+            sample_id=str(row["id"]),
+            dialect=str(row["dialect"]),
+            reference_text=str(row["text"]),
+            duration_sec=float(row["duration"]),
+            true_aldi=float(row["aldi_score"]),
+        )
+        for row in meta.to_dict(orient="records")
+    ]
+    print("[info] metadata for {} utterances".format(len(utterances)))
+    return utterances
+
+
+def attach_audio(pool: List[Utterance], hf_dataset_dir: str, split: str) -> List[Utterance]:
+    from datasets import load_from_disk
+
+    dataset = load_from_disk(hf_dataset_dir)
+    if not hasattr(dataset, "column_names") or isinstance(dataset.column_names, dict):
+        dataset = dataset[split]
+
+    id_column = "seg_id" if "seg_id" in dataset.column_names else "id"
+    # Reading one column does not decode audio, so this index is cheap.
+    positions = {str(v): i for i, v in enumerate(dataset[id_column])}
+
+    attached: List[Utterance] = []
+    missing: List[str] = []
+    for utterance in pool:
+        index = positions.get(utterance.sample_id)
+        if index is None:
+            missing.append(utterance.sample_id)
+            continue
+        audio = dataset[index]["audio"]
+        utterance.audio_input = {
+            "array": audio["array"],
+            "sampling_rate": int(audio["sampling_rate"]),
+        }
+        attached.append(utterance)
+
+    if missing:
+        print("[warn] no audio found for {} utterance(s), first few: {}".format(len(missing), missing[:5]))
+    print("[info] audio attached for {} utterances".format(len(attached)))
+    return attached
+
+
 def select_pool(samples: List[object], per_dialect: int, seed: int) -> List[object]:
     by_dialect: Dict[str, List[object]] = {}
     for sample in samples:
@@ -259,17 +319,15 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
-    print("[stage] loading Casablanca")
-    samples = list(
-        iter_casablanca_hf_samples(
-            hf_dataset_dir=args.hf_dataset,
-            split=args.split,
-            metadata_csv=args.metadata_csv,
-        )
-    )
-    print("[info] loaded {} utterances".format(len(samples)))
+    print("[stage] reading the scored metadata")
+    utterances = load_metadata(args.metadata_csv)
 
-    pool = select_pool(samples, args.pool_per_dialect, args.seed)
+    pool = select_pool(utterances, args.pool_per_dialect, args.seed)
+
+    print("[stage] attaching audio for the pool")
+    pool = attach_audio(pool, args.hf_dataset, args.split)
+    if not pool:
+        raise RuntimeError("No pool utterance could be matched to audio in {}".format(args.hf_dataset))
 
     print("[stage] transcribing the pool with {}".format(args.asr_model))
     transcriber = WhisperASRTranscriber(
