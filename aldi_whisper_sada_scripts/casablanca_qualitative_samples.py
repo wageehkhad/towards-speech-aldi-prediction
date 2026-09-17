@@ -313,6 +313,14 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--pool-per-dialect", type=int, default=20)
     ap.add_argument("--samples-per-dialect", type=int, default=5)
     ap.add_argument("--asr-batch-size", type=int, default=4)
+    ap.add_argument(
+        "--chunk-length-s",
+        type=float,
+        default=0.0,
+        help="Whisper chunking window; 0 disables it. Casablanca clips are well "
+             "under 30s, and padding them out to a chunk lets Whisper hallucinate "
+             "repetition loops into the silence.",
+    )
     ap.add_argument("--aldi-batch-size", type=int, default=32)
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--local-only", action="store_true")
@@ -339,6 +347,7 @@ def main() -> None:
         asr_model=args.asr_model,
         device=args.device,
         local_only=args.local_only,
+        chunk_length_s=args.chunk_length_s if args.chunk_length_s > 0 else None,
     )
     transcripts: List[str] = []
     for start in range(0, len(pool), args.asr_batch_size):
