@@ -93,8 +93,14 @@ pip install -r requirements.txt
 ```
 
 Python 3.8 (pinned in `.python-version`), CUDA PyTorch. Training was run on
-NVIDIA Quadro RTX 8000 GPUs. `requirements.txt` lists exact versions of the
-environment the reported results were produced in.
+NVIDIA Quadro RTX 8000 GPUs.
+
+`transformers` must be 4.46.3, the version the released models were saved with.
+Later versions break the pipeline without raising an error: transformers 5
+returns wrong Sentence-ALDi scores for dialectal Arabic, and transformers 4.57
+makes Whisper emit repetition loops on short clips. `datasets` must be below 4,
+which changed how audio is returned. Both pins and the reasons are in
+`requirements.txt`.
 
 ## Data
 

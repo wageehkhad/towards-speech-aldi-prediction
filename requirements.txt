@@ -1,3 +1,16 @@
+# transformers is pinned to the version the released models were trained and
+# saved with, recorded in the ASR model's config.json on the hub. Newer versions
+# break the pipeline silently rather than raising:
+#   transformers 5.x  returns wrong Sentence-ALDi scores for dialectal Arabic,
+#                     so every ALDi number comes out too low
+#   transformers 4.57 makes Whisper hallucinate repetition loops into the
+#                     silence of padded short clips, destroying the transcripts
+transformers==4.46.3
+
+# datasets 4 returns audio as a torchcodec AudioDecoder instead of a dict with
+# "array" and "sampling_rate", which every loader in this repo expects.
+datasets<4
+
 numpy
 pandas
 scipy
@@ -5,9 +18,8 @@ matplotlib
 tqdm
 torch
 torchaudio
-transformers
-datasets
 soundfile
 pydub
 jiwer
+openpyxl
 yt-dlp
