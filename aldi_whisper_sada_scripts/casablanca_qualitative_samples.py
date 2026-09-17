@@ -128,6 +128,11 @@ def score_direct(samples: List[object], model, extractor, device: torch.device, 
             waves = []
             for sample in batch:
                 audio = sample.audio_input
+                if not isinstance(audio, dict) or "array" not in audio:
+                    raise RuntimeError(
+                        "Audio for {} is missing its samples; something consumed it "
+                        "before the direct model ran".format(sample.sample_id)
+                    )
                 wav = torch.tensor(audio["array"], dtype=torch.float32)
                 if wav.dim() > 1:
                     wav = wav.mean(dim=0)
@@ -338,7 +343,11 @@ def main() -> None:
     transcripts: List[str] = []
     for start in range(0, len(pool), args.asr_batch_size):
         batch = pool[start : start + args.asr_batch_size]
-        rows = transcriber.transcribe_batch([s.audio_input for s in batch], batch_size=args.asr_batch_size)
+        # The ASR pipeline pops "array" out of the dict it is handed, so pass
+        # shallow copies and keep each utterance's own audio intact for the
+        # direct model, which runs over the same clips afterwards.
+        audio_copies = [dict(s.audio_input) for s in batch]
+        rows = transcriber.transcribe_batch(audio_copies, batch_size=args.asr_batch_size)
         transcripts.extend(r["text"] for r in rows)
         print("[info]   {}/{}".format(min(start + args.asr_batch_size, len(pool)), len(pool)))
 
