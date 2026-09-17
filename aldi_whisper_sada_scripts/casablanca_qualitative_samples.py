@@ -48,6 +48,7 @@ MIN_DURATION_SEC = 0.5
 COLUMNS = [
     "sample_id",
     "dialect",
+    "n_tokens_gold",
     "duration_sec",
     "gold_transcript",
     "cascaded_transcript",
@@ -237,12 +238,14 @@ def select_pool(samples: List[object], per_dialect: int, seed: int) -> List[obje
 
     pool: List[object] = []
     for dialect in sorted(by_dialect):
-        group = sorted(by_dialect[dialect], key=lambda s: s.duration_sec)
+        group = sorted(by_dialect[dialect], key=lambda s: len(s.reference_text.split()))
         if len(group) <= per_dialect:
             pool.extend(group)
             continue
-        # Even positions across the duration-sorted group, so the pool holds
-        # short and long utterances rather than clustering at the median.
+        # Even positions across the group sorted by transcript token count, so
+        # the pool spans short and long utterances rather than clustering at the
+        # median. Token count rather than duration, because that is what governs
+        # how much lexical evidence of dialectness a transcript carries.
         step = (len(group) - 1) / float(per_dialect - 1)
         picked = {int(round(i * step)) for i in range(per_dialect)}
         pool.extend(group[i] for i in sorted(picked))
@@ -283,8 +286,8 @@ def write_outputs(final_df: pd.DataFrame, pool_df: pd.DataFrame, out_dir: str) -
             final_df.to_excel(writer, sheet_name="samples", index=False)
             sheet = writer.sheets["samples"]
             widths = {
-                "A": 12, "B": 12, "C": 11, "D": 60, "E": 60,
-                "F": 8, "G": 11, "H": 13, "I": 11, "J": 18, "K": 17,
+                "A": 12, "B": 12, "C": 10, "D": 11, "E": 60, "F": 60,
+                "G": 8, "H": 11, "I": 13, "J": 11, "K": 18, "L": 17,
             }
             for column, width in widths.items():
                 sheet.column_dimensions[column].width = width
@@ -385,6 +388,7 @@ def main() -> None:
         {
             "sample_id": [s.sample_id for s in pool],
             "dialect": [s.dialect for s in pool],
+            "n_tokens_gold": [len(s.reference_text.split()) for s in pool],
             "duration_sec": [round(s.duration_sec, 2) for s in pool],
             "gold_transcript": [s.reference_text for s in pool],
             "cascaded_transcript": transcripts,
@@ -401,7 +405,10 @@ def main() -> None:
     final_df = select_final(pool_df, args.samples_per_dialect)
 
     print()
-    preview = ["sample_id", "dialect", "duration_sec", "wer", "aldi_gold", "aldi_cascaded", "aldi_direct"]
+    preview = [
+        "sample_id", "dialect", "n_tokens_gold", "duration_sec",
+        "wer", "aldi_gold", "aldi_cascaded", "aldi_direct",
+    ]
     print(final_df[preview].to_string(index=False))
     print()
     write_outputs(final_df, pool_df, args.output_dir)
