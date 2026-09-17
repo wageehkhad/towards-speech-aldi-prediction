@@ -226,8 +226,10 @@ def attach_audio(pool: List[Utterance], hf_dataset_dir: str, split: str) -> List
 def select_pool(samples: List[object], per_dialect: int, seed: int) -> List[object]:
     by_dialect: Dict[str, List[object]] = {}
     for sample in samples:
-        # A clip shorter than MIN_DURATION_SEC cannot carry the transcript it is
-        # paired with, so its WER would say nothing about the ASR model.
+        # Only zero-length clips are dropped. The reported evaluation scores the
+        # full Casablanca validation split with no duration filtering, so the
+        # sample stays faithful to it: clips Whisper cannot transcribe are part
+        # of what the cascaded approach is measured on.
         if sample.duration_sec < MIN_DURATION_SEC:
             continue
         if is_usable(sample.reference_text):
